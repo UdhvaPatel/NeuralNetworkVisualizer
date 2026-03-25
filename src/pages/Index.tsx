@@ -161,7 +161,7 @@ const Playground: React.FC = () => {
               Portfolio
             </a>
             <a
-              href="https://github.com/UdhvaPatel/ingenuity-ai-forge.git"
+              href="https://github.com/UdhvaPatel/NeuralNetworkVisualizer.git"
               target="_blank"
               rel="noopener noreferrer"
               className="text-muted-foreground hover:text-foreground transition-colors"
