@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 225 25% 6%;
+    --foreground: 210 40% 92%;
+
+    --card: 225 25% 9%;
+    --card-foreground: 210 40% 92%;
+
+    --popover: 225 25% 9%;
+    --popover-foreground: 210 40% 92%;
+
+    --primary: 185 100% 50%;
+    --primary-foreground: 225 25% 6%;
+
+    --secondary: 320 100% 60%;
+    --secondary-foreground: 225 25% 6%;
+
+    --muted: 225 20% 14%;
+    --muted-foreground: 215 20% 55%;
+
+    --accent: 265 100% 65%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 225 20% 16%;
+    --input: 225 20% 16%;
+    --ring: 185 100% 50%;
+
+    --radius: 0.75rem;
+
+    --neon-glow: 0 0 20px hsl(185 100% 50% / 0.3), 0 0 40px hsl(185 100% 50% / 0.1);
+    --neon-glow-secondary: 0 0 20px hsl(320 100% 60% / 0.3), 0 0 40px hsl(320 100% 60% / 0.1);
+    --neon-glow-accent: 0 0 20px hsl(265 100% 65% / 0.3), 0 0 40px hsl(265 100% 65% / 0.1);
+
+    --sidebar-background: 225 25% 8%;
+    --sidebar-foreground: 210 40% 92%;
+    --sidebar-primary: 185 100% 50%;
+    --sidebar-primary-foreground: 225 25% 6%;
+    --sidebar-accent: 225 20% 14%;
+    --sidebar-accent-foreground: 210 40% 92%;
+    --sidebar-border: 225 20% 16%;
+    --sidebar-ring: 185 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply bg-card/80 backdrop-blur-xl border border-border rounded-lg;
+  }
+
+  .neon-text {
+    color: hsl(var(--primary));
+    text-shadow: var(--neon-glow);
+  }
+
+  .neon-text-secondary {
+    color: hsl(var(--secondary));
+    text-shadow: var(--neon-glow-secondary);
+  }
+
+  .neon-border {
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: var(--neon-glow);
+  }
+
+  .grid-bg {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
+
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+
+  .network-connection {
+    transition: opacity 200ms ease, stroke-width 200ms ease;
+  }
+
+  .network-connection-active {
+    stroke: hsl(var(--primary) / 0.75);
+    stroke-width: 1.4;
+    stroke-dasharray: 6 6;
+    animation: network-flow 1.1s linear infinite, network-glow 1.4s ease-in-out infinite;
+    filter: drop-shadow(0 0 2px hsl(var(--primary) / 0.7))
+      drop-shadow(0 0 6px hsl(var(--primary) / 0.35));
+  }
+}
+
+@keyframes network-flow {
+  from {
+    stroke-dashoffset: 0;
+  }
+  to {
+    stroke-dashoffset: -24;
+  }
+}
+
+@keyframes network-glow {
+  0%,
+  100% {
+    opacity: 0.55;
+  }
+  50% {
+    opacity: 1;
+  }
+}
